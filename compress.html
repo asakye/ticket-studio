@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B4A">
+  <meta name="description" content="免费在线图片压缩工具 - 压缩图片体积，保持清晰度，完全本地处理。">
+  <title>图片压缩 - 票根工坊</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">🎫 票根工坊</a>
+    <a class="back-link" href="index.html">← 返回</a>
+  </header>
+
+  <main class="page-main">
+    <h1 class="page-title">图片压缩</h1>
+    <p class="page-desc">微信 / 小红书发图前压一压，照片不变糊，体积小一半</p>
+
+    <section class="step-card">
+      <input type="file" id="compressInput" accept="image/*" hidden>
+      <button class="upload-btn" id="compressUploadBtn" type="button">
+        <span class="upload-icon">🗜️</span>
+        <span>选择图片</span>
+        <small>图片仅在本地处理，不会上传</small>
+      </button>
+    </section>
+
+    <section class="step-card" id="compressEditor" hidden>
+      <div class="field-group">
+        <label for="qualityRange">压缩质量：<span id="qualityValue">70</span>%</label>
+        <input type="range" id="qualityRange" min="20" max="100" value="70">
+      </div>
+      <div class="field-group">
+        <label for="maxWidthRange">最大宽度：<span id="maxWidthValue">1920</span>px</label>
+        <input type="range" id="maxWidthRange" min="480" max="3840" step="120" value="1920">
+      </div>
+      <div class="compress-preview" id="compressPreview"></div>
+      <div class="size-compare" id="sizeCompare"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-block" id="compressDownload" type="button">下载压缩后的图片</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>票根工坊 · 图片只在本地处理，不会上传到任何服务器</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/compress.js"></script>
+</body>
+</html>
