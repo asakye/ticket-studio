@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B4A">
+  <meta name="description" content="旅行票根生成器 - 上传照片，自定义城市、日期、备注，一键生成高清旅行票根。">
+  <meta property="og:title" content="票根工坊 - 把旅行变成一张票根">
+  <meta property="og:description" content="30 秒生成专属旅行票根，免费在线工具，图片只在本地处理。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>旅行票根生成器 - 票根工坊</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">🎫 票根工坊</a>
+    <a class="back-link" href="index.html">← 返回</a>
+  </header>
+
+  <main class="page-main">
+    <h1 class="page-title">旅行票根生成器</h1>
+    <p class="page-desc">上传照片 → 选模板 → 填信息 → 保存到相册</p>
+
+    <section class="step-card upload-card" id="uploadCard">
+      <input type="file" id="photoInput" accept="image/*" hidden>
+      <button class="upload-btn" id="uploadBtn" type="button">
+        <span class="upload-icon">📷</span>
+        <span>点击选择照片</span>
+        <small>支持 JPG / PNG，建议竖构图照片效果更好</small>
+      </button>
+    </section>
+
+    <section class="step-card editor-card" id="editorCard" hidden>
+      <div class="preview-wrap">
+        <canvas id="previewCanvas"></canvas>
+      </div>
+
+      <div class="field-group">
+        <label>票根模板</label>
+        <div class="template-row" id="templateRow"></div>
+        <div class="template-lock-hint" id="templateLockHint" hidden>🔒 高级模板：解锁后可用</div>
+      </div>
+
+      <div class="field-group">
+        <label for="cityInput">城市（目的地）</label>
+        <input type="text" id="cityInput" placeholder="例：大理 / Tokyo / Paris" maxlength="24">
+      </div>
+
+      <div class="field-group">
+        <label for="countryInput">国家 / 地区（选填）</label>
+        <input type="text" id="countryInput" placeholder="例：中国 / 日本 / France" maxlength="20">
+      </div>
+
+      <div class="field-group">
+        <label for="dateInput">日期</label>
+        <input type="text" id="dateInput" placeholder="例：2026.08.06" maxlength="14">
+      </div>
+
+      <div class="field-group">
+        <label for="noInput">编号（选填）</label>
+        <input type="text" id="noInput" placeholder="例：NO.001 / 2026-08" maxlength="12">
+      </div>
+
+      <div class="field-group">
+        <label for="noteInput">备注（选填，最多两行）</label>
+        <textarea id="noteInput" rows="2" maxlength="60" placeholder="例：风很大，海很蓝，下次还来。"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-block" id="exportBtn" type="button">保存高清图片</button>
+        <button class="btn btn-outline btn-block" id="shareBtn" type="button">📤 分享给朋友</button>
+        <button class="btn btn-outline btn-block" id="unlockBtn" type="button">🔓 解锁全部模板</button>
+      </div>
+      <p class="tiny-note" id="watermarkNote"></p>
+    </section>
+  </main>
+
+  <div class="modal" id="unlockModal" hidden>
+    <div class="modal-mask" id="unlockMask"></div>
+    <div class="modal-box">
+      <button class="modal-close" id="unlockClose" type="button">✕</button>
+      <h2>解锁高级模板</h2>
+      <p class="modal-desc">一次买断 <strong>6 元</strong>，永久解锁：</p>
+      <ul class="unlock-list">
+        <li>全部 <span id="proTemplateCount">3</span> 款高级票根模板</li>
+        <li>3 倍超高清导出（适合打印 / 发大图）</li>
+        <li>导出无水印</li>
+        <li>永久有效，换设备不丢</li>
+      </ul>
+      <div class="qr-placeholder" id="qrPlaceholder">
+        <p>👇 扫码支付 6 元后，把付款截图发给我们领取解锁码</p>
+        <div class="qr-box" id="qrBox">
+          <span>收款码占位<br>（把收款码图片放到 assets/pay-qr.png 即可自动显示）</span>
+        </div>
+      </div>
+      <div class="code-row">
+        <input type="text" id="codeInput" placeholder="输入解锁码">
+        <button class="btn btn-primary" id="codeSubmit" type="button">激活</button>
+      </div>
+      <p class="tiny-note" id="unlockStatus"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>票根工坊 · 图片只在本地处理，不会上传到任何服务器</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/ticket.js"></script>
+</body>
+</html>
