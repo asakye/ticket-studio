@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B4A">
+  <meta name="description" content="朋友圈九宫格切图工具 - 一张图切成 9 格，长按即可保存。">
+  <title>九宫格切图 - 票根工坊</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">🎫 票根工坊</a>
+    <a class="back-link" href="index.html">← 返回</a>
+  </header>
+
+  <main class="page-main">
+    <h1 class="page-title">朋友圈九宫格切图</h1>
+    <p class="page-desc">一张图切成 9 格，点开每格长按保存到相册</p>
+
+    <section class="step-card">
+      <input type="file" id="gridInput" accept="image/*" hidden>
+      <button class="upload-btn" id="gridUploadBtn" type="button">
+        <span class="upload-icon">🖼️</span>
+        <span>选择要切的图片</span>
+        <small>建议选择正方形图片，效果最佳</small>
+      </button>
+    </section>
+
+    <section class="step-card" id="gridEditor" hidden>
+      <div class="field-group">
+        <label>切分方式</label>
+        <div class="segment-row" id="gridModeRow">
+          <button class="segment active" data-mode="3" type="button">3 × 3</button>
+          <button class="segment" data-mode="2" type="button">2 × 2</button>
+          <button class="segment" data-mode="4" type="button">4 × 3</button>
+        </div>
+      </div>
+      <div class="grid-preview" id="gridPreview"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-block" id="gridSaveAll" type="button">依次下载全部（9 张）</button>
+      </div>
+      <p class="tiny-note">手机上点击「依次下载」会逐张保存；也可以长按下面任意一张单独保存。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>票根工坊 · 图片只在本地处理，不会上传到任何服务器</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/grid.js"></script>
+</body>
+</html>
