@@ -1,0 +1,24 @@
+{
+  "name": "票根工坊 - 旅行票根生成器",
+  "short_name": "票根工坊",
+  "description": "把旅行照片变成一张值得收藏的票根，附九宫格切图、图片压缩工具。",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F7F8",
+  "theme_color": "#FF6B4A",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
